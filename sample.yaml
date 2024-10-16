@@ -14,7 +14,7 @@
 
 - name: roles playbook
   hosts: localhost
-  connections: local
+  connection: local
   become: true
   roles:
     - sample
