@@ -1,0 +1,20 @@
+- name: sample playbook
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.yum:
+        name: nginx
+        state: latest
+    - name: Restart Nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: started
+
+- name: roles playbook
+  hosts: localhost
+  connections: local
+  become: true
+  roles:
+    - sample
