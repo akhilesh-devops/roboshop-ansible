@@ -6,12 +6,16 @@
   tasks:
     - name: Build {{component}} Service
       ansible.builtin.yum:
-        name: python36 gcc python3-devel
+        name:
+          - python36
+          - gcc
+          - python3-devel
         state: installed
+
     - name: App Pre-requisite
       ansible.builtin.import_tasks: app-prerequisite.yml
 
-    - name: Build {{component}} Service
+    - name: Install packages
       ansible.builtin.shell: pip3.6 install -r requirements.txt
       args:
         chdir: /app
