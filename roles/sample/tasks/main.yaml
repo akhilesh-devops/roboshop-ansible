@@ -1,8 +1,0 @@
-- name: Install Nginx
-  ansible.builtin.yum:
-    name: nginx
-    state: latest
-- name: Restart Nginx
-  ansible.builtin.systemd:
-    name: nginx
-    state: started
