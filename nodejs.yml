@@ -1,0 +1,20 @@
+- name: Install NodeJS Repos
+  ansible.builtin.shell: yum module disable nodejs -y ; yum module enable nodejs:18 -y
+
+- name: Install NodeJS
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: App Pre-requisite
+  ansible.builtin.import_tasks: app-prerequisite.yml
+
+- name: Install Nodejs Dependencies
+  ansible.builtin.shell: npm install
+
+- name: Mongodb schema setup
+  ansible.builtin.import_tasks: mongodb-schema.yml
+
+- name: Systemd setup
+  ansible.builtin.import_tasks: systemd-setup.yml
+
