@@ -1,4 +1,4 @@
-name: Install python
-ansible.builtin.import_role:
-  name: common
-  tasks_from: python.yml
+- name: Install python
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: python.yml
