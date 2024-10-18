@@ -4,7 +4,7 @@
   vars:
     component: payment
   tasks:
-    - name: Build {{component}} Service
+    - name: Install python
       ansible.builtin.yum:
         name:
           - python36
@@ -15,10 +15,10 @@
     - name: App Pre-requisite
       ansible.builtin.import_tasks: app-prerequisite.yml
 
-    - name: Install packages
+    - name: Download Dependencies
       ansible.builtin.shell: pip3.6 install -r requirements.txt
       args:
         chdir: /app
 
-    - name: Restart the payment service
+    - name: systemD setup
       ansible.builtin.import_tasks: systemd-setup.yml
